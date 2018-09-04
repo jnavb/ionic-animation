@@ -1,11 +1,12 @@
 import { Component, ViewChild, Renderer, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-first-exercise',
+  templateUrl: 'first-exercise.html',
 })
-export class HomePage {
+export class FirstExercisePage {
   @ViewChild('myButton', {read: ElementRef}) myButton;
 
   constructor(
