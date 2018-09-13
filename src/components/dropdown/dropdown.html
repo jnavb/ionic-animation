@@ -1,0 +1,18 @@
+<select [(ngModel)]="selectedValue" class="custom-select">
+  <option *ngFor="let option of options" [ngValue]="option">
+    {{option.name}}
+    {{option.id}}
+    {{option.name2}}
+  </option>
+</select>
+<div  [multiline]="directiveInput">
+  {{ selectedValue?.id }}
+</div>
+
+
+
+<ion-item>
+  <ion-select interface="popover" [(ngModel)]="employee">
+    <ion-option [multiline]="option" *ngFor="let option of options"></ion-option>
+  </ion-select>
+</ion-item>

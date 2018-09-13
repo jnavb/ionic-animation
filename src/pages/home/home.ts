@@ -18,4 +18,8 @@ export class HomePage {
     this.renderer.setElementStyle(this.myButton.nativeElement, 'top', '0px');
   }
 
+  onClick() {
+    this.navCtrl.push("SliderPage")
+  }
+
 }
