@@ -11,12 +11,12 @@ export class MultilineDirective {
   }
 
   ngOnInit() {     
-    Object.values(this.objectToDiv).map(value => {
+/*     Object.values(this.objectToDiv).map(value => {
       const newElement = document.createElement('div');
       newElement.innerHTML = value;
       console.log('elem', newElement.innerHTML)
       this.el.nativeElement.appendChild(newElement);
-    });
+    }); */
   }
 
 
