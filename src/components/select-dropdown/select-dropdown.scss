@@ -1,3 +1,119 @@
 select-dropdown {
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
 
+  .select-item {
+    div:nth-child(odd) {
+      font-size: .9em;
+    }
+
+    div:nth-child(even) {
+      line-height: 1.5em;
+      font-size: 1.1em;
+    }
+  }
+
+  .nav {
+    div {
+      display: block;
+      padding: 0 16px;
+      line-height: inherit;
+      cursor: pointer;
+    }
+
+    &-menu {
+      z-index: 999;
+
+      &-item {
+        min-width: 175px;
+        background: white;
+        display: inline-block;
+        position: relative;
+        box-shadow: 0px 5px 25px -5px #888888;
+
+        .enter-selected {
+          .nav-selected-icon {
+            transform: rotate(180deg);
+          }
+        }
+        .close-selected {
+          .nav-selected-icon {
+            transform: rotate(0deg);
+          }
+        }
+
+        .nav-selected {
+          display: flex;
+          align-items: center;
+          padding: 15px;
+
+          .nav-selected-text {
+            margin-right: 15px;
+          }
+
+          .nav-selected-icon {
+            border-top: 5px solid;
+            border-right: 5px solid transparent;
+            border-left: 5px solid transparent;
+            color: black;
+          }
+        }
+
+        .open {
+          display: block;
+        }
+
+        .close {
+          display: none;
+        }
+      }
+    }
+
+    &-submenu {
+      top: 100%;
+
+      //display: none;
+      &-item {
+        padding: 15px;
+        /* &:hover {
+    animation: customTappable .5s;
+    } */
+      }
+    }
+  }
+
+  .tap-open {
+    animation: customTappable-open .2s;
+  }
+
+  .tap-close {
+    animation: customTappable-close .2s;
+  }
+
+  @keyframes customTappable-open {
+    0% {}
+
+    50% {
+      background: #f2f2f2;
+    }
+
+    100% {
+      background: white;
+    }
+  }
+
+  @keyframes customTappable-close {
+    0% {}
+
+    50% {
+      background: #f2f2f2;
+    }
+
+    100% {
+      background: white;
+    }
+  }
 }

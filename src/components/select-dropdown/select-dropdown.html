@@ -1,4 +1,25 @@
-<!-- Generated template for the SelectDropdownComponent component -->
-<div>
-  {{text}}
+<div class="nav-menu">
+  <div tappable class="nav-menu-item">
+    <div (click)="onClickSelected()" class="nav-selected" 
+      [ngClass]="{'enter-selected' : isMenuOpen,
+        'close-selected' : !isMenuOpen,
+        'tap-open' : isTap,
+        'tap-close' : !isTap}">
+      <div class="nav-selected-text select-item">
+        <div>{{ selectedOption.value1 }}</div>
+        <div>{{ selectedOption.value2 }}</div>
+        <div>{{ selectedOption.value3 }}</div>
+      </div>
+      <div class="nav-selected-icon"></div>
+    </div>
+
+    <div class="nav-submenu" [ngClass]="{'open' : isMenuOpen, 'close' : !isMenuOpen}">
+      <div class="nav-submenu-item select-item" (click)="onClickNewSelect(index)" *ngFor="let option of options; let index = index">
+        <div>{{ option.value1 }}</div>
+        <div>{{ option.value2 }}</div>
+        <div>{{ option.value3 }}</div>
+      </div>
+    </div>
+  </div>
 </div>
+
