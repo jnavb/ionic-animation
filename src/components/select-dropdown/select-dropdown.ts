@@ -1,6 +1,7 @@
 import {
   Component,
-  ElementRef
+  ElementRef,
+  Input
 } from '@angular/core';
 import {
   NavController
@@ -11,31 +12,8 @@ import {
   templateUrl: 'select-dropdown.html'
 })
 export class SelectDropdownComponent {
-  options: any[] = [{
-      key: 1,
-      value1: "Javier Hidalgo",
-      value2: "05 243 143 428 4",
-      value3: "Asistencia Sanitaria"
-    },
-    {
-      key: 2,
-      value1: "Manolito",
-      value2: "05 050 534 824",
-      value3: "Asistencia Sanitaria"
-    },
-    {
-      key: 3,
-      value1: "Patricia Hidalgo",
-      value2: "34 050 143 428 4",
-      value3: "Asistencia Sanitaria"
-    },
-  ];
-  selectedOption: any = {
-    key: 4,
-    value1: "Jose Julian",
-    value2: "05 050 143 4288",
-    value3: "Dental"
-  };
+  @Input() options: any;
+
   selectedElement: any;
   isMenuOpen: boolean = false;
   isTap: boolean = false;
@@ -51,19 +29,37 @@ export class SelectDropdownComponent {
     this.selectedElement = this.element.nativeElement.getElementsByClassName("nav-selected")[0];
   }
 
-  onClickSelected() {
-    this.isMenuOpen = !this.isMenuOpen;
-    this.isTap = !this.isTap;
+  onClickSelected(index) {
+    if (index !== 0) {
+      this.changeSelected(index);
+    }
+    /* const clickedOption = document.getElementsByClassName('nav-selected')[index];
+    const newOne = clickedOption.cloneNode(true);
+    clickedOption.parentNode.replaceChild(newOne, clickedOption);
+    const a = document.getElementsByClassName('nav-selected')[index];
+    a.classList.add('tap-open'); */
   }
 
-  onClickNewSelect(index: number) {
-    const userClicked = document.getElementsByClassName('nav-submenu-item')[index];
-    userClicked.classList.add('tap-open');
+  private changeSelected(index: number) {
+    //userClicked.classList.add('tap-open');
     setTimeout(() => {
-      this.isMenuOpen = false;
-      this.options.splice(index + 1, 0, this.selectedOption);
-      this.selectedOption = this.options.splice(index, 1)[0];
+      this.options.splice(index + 1, 0, this.options[0]);
+      this.options[0] = this.options.splice(index, 1)[0];
     }, 200);
+    setTimeout(() => {
+      //this.hideSubmenu();
+    }, 1000);
+  }
+
+  private hideSubmenu() {
+    const menu = document.getElementsByClassName('nav-selected');
+    Array.from(menu as HTMLCollectionOf < HTMLElement > )
+      .map((option, index) => {
+        console.log(option);
+        if (index === 0) return;
+
+        option.style.display = 'none';
+      })
   }
 
 }

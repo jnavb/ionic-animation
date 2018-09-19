@@ -1,4 +1,19 @@
+<h1> {{ example }} </h1>
 <div class="nav-menu">
+  <div tappable class="nav-menu-item">
+    <div (click)="onClickSelected(index)" class="nav-selected" 
+        *ngFor="let option of options; let index = index">
+      <div class="nav-selected-text select-item">
+        <div>{{ option.value1 }}</div>
+        <div>{{ option.value2 }}</div>
+        <div>{{ option.value3 }}</div>
+      </div>
+      <div *ngIf="index === 0" class="nav-selected-icon"></div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="nav-menu">
   <div tappable class="nav-menu-item">
     <div (click)="onClickSelected()" class="nav-selected" 
       [ngClass]="{'enter-selected' : isMenuOpen,
@@ -23,3 +38,4 @@
   </div>
 </div>
 
+ -->

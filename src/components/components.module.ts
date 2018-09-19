@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { SlideComponent } from './slide/slide';
 import { DropdownComponent } from './dropdown/dropdown';
 import { SelectDropdownComponent } from './select-dropdown/select-dropdown';
+import { SliderComponent } from './slider/slider';
 @NgModule({
 	declarations: [SlideComponent,
     DropdownComponent,
-    SelectDropdownComponent],
+    SelectDropdownComponent,
+    SliderComponent],
 	imports: [],
 	exports: [SlideComponent,
     DropdownComponent,
-    SelectDropdownComponent]
+    SelectDropdownComponent,
+    SliderComponent]
 })
 export class ComponentsModule {}

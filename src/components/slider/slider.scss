@@ -1,0 +1,25 @@
+slider {
+    ion-slides:nth-child(2) {
+        height: 30vh;
+    }
+    ion-slide {
+        //margin-right: 50px;
+        //margin-left: 50px;
+        transform: scale(.3);
+    }
+    /* .swiper-slide-active {
+        transform: scale(.5);
+    } */
+    .a {
+        background: red;
+    }
+    .b {
+        background: yellow;
+    }
+    .c {
+        background: green;
+    }
+    .d {
+        background: blue;
+    }
+}

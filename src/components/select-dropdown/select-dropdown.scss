@@ -27,6 +27,16 @@ select-dropdown {
     &-menu {
       z-index: 999;
 
+      &-item:hover  {
+        .nav-selected:not(:first-child) {
+          display: block;
+        }
+        
+        .nav-selected-icon {
+          transform: rotate(180deg);
+        }
+      }
+
       &-item {
         min-width: 175px;
         background: white;
@@ -34,17 +44,14 @@ select-dropdown {
         position: relative;
         box-shadow: 0px 5px 25px -5px #888888;
 
-        .enter-selected {
-          .nav-selected-icon {
-            transform: rotate(180deg);
-          }
-        }
-        .close-selected {
-          .nav-selected-icon {
-            transform: rotate(0deg);
-          }
-        }
 
+        .nav-selected:not(:first-child) {
+          display: none;
+        }
+        
+        /* .nav-selected {
+          animation: customTappable-open .2s;
+        } */
         .nav-selected {
           display: flex;
           align-items: center;

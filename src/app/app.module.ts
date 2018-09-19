@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { DropdownComponent } from '../components/dropdown/dropdown';
 import { MultilineDirective } from '../directives/multiline/multiline'
 import { SelectDropdownComponent } from '../components/select-dropdown/select-dropdown'
+import { SliderComponent } from '../components/slider/slider';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SelectDropdownComponent } from '../components/select-dropdown/select-dr
     SlideComponent,
     DropdownComponent,
     MultilineDirective,
-    SelectDropdownComponent
+    SelectDropdownComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
