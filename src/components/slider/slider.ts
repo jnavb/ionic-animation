@@ -11,8 +11,8 @@ export class SliderComponent {
   
   private widthDevice: number;
   private heigthDevice: number;
-  private readonly SLIDE_BETWEEN_RATIO: number = -0.375; 
-  
+  private readonly SLIDE_BETWEEN_RATIO: number = -0.45; 
+  private lastCenter: number;
 
   constructor(private platform: Platform) { }
 
@@ -32,11 +32,12 @@ export class SliderComponent {
 
       this.slides.spaceBetween = this.widthDevice * this.SLIDE_BETWEEN_RATIO;
     });
+    console.log('asdfasdfasdf',this.slides.length)
+    //this.onProgress(0);
 
     this.slides.ionSlideDrag.subscribe( slidesData => this.onSlideProgress(slidesData));
-    
-    this.slides.ionSlideTouchStart.subscribe(() => this.toggleTransitions(false));
-    this.slides.ionSlideTouchEnd.subscribe(() => this.toggleTransitions(true));
+    this.slides.ionSlideTouchStart.subscribe((slidesData) => this.toggleTransitions(false, slidesData));
+    this.slides.ionSlideTouchEnd.subscribe((slidesData) => this.toggleTransitions(true, slidesData));
   }
 
   onSlideProgress(slidesData) {
@@ -49,13 +50,16 @@ export class SliderComponent {
   }
 
   onProgress(centerX: number): void {
-    let maxScale = 0.8;
+    this.lastCenter = centerX;
+
+    let maxScale = .6;
     let slideCount = this.slides._slides.length;
     let slideDelta = 1 / (slideCount - 1)
     let slope = Math.abs((maxScale - 1) / slideDelta);
+    console.log(maxScale, slideCount, slideDelta, slope);
     for (let slideIndex = 0; slideIndex < slideCount; slideIndex++) {
       let slideX = slideIndex * slideDelta;
-      let slideScale = 0.5;
+      let slideScale = 0.2;
       if (slideX > centerX - slideDelta) {
         if (slideX <= centerX) {
           slideScale += (slideX - (centerX - slideDelta)) * slope;
@@ -65,14 +69,19 @@ export class SliderComponent {
       }
       //console.log('slideScale', slideScale)
       this.slides._slides[slideIndex].style.transform = `scale(${slideScale})`;
-      this.slides._slides[slideIndex].innerHTML = '' + slideScale.toString().substring(0,3);
+      this.slides._slides[slideIndex].innerHTML = '' + slideScale.toString().substring(0,5);
     }
   }
-  toggleTransitions(enable: boolean): void {
-    /* (enable) ? console.log('TOGGLE TRUE') : console.log('TOGGLE FALSEE')
+  toggleTransitions(enable: boolean, slidesData): void {
+    (enable) ? console.log('TOGGLE TRUE', slidesData) : console.log('TOGGLE FALSEE', slidesData)
     let count = this.slides._slides.length;
     for (let index = 0; index < count; index++) {
-      this.slides._slides[index].style.transition = `transform ${this.slides.speed}ms !important`;
-    } */
+      //this.slides._slides[index].style.transition = `transform ${this.slides.speed}ms !important`;
+      //this.slides._slides[index].style.transform = `scale(.8) !important`;
+    } 
+  }
+
+  calculateSlideWithGivenProgress() {
+
   }
 }

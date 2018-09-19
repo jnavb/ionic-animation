@@ -5,11 +5,17 @@ slider {
     ion-slide {
         //margin-right: 50px;
         //margin-left: 50px;
-        transform: scale(.3);
+        //transform: scale(.3);
+       //width: 60vw !important;
     }
     /* .swiper-slide-active {
         transform: scale(.5);
     } */
+
+    .swiper-slide-active {
+        transform: scale(.8);
+    }
+
     .a {
         background: red;
     }
